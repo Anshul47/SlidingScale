@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 if(y == 0){
                     num.setText("10");
                     lastPos = 20;
-                }else if(pos > lastPos){
+                }else if(pos >= lastPos){
                     num.setText(dataObjects[(pos-1) - 10]);
                     lastPos = pos;
                 }else{
