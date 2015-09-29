@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     public int y = 0;
     public int lastPos = 0;
     public int count;
+    int flag = 0;
+    String showData = "10";
+    int nextCount = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
         num = (TextView) findViewById(R.id.num);
 
+        showData = "40";
+        nextCount = 40 + 10;
+
         listview = (HorizontalListView) findViewById(R.id.listview);
         listview.setAdapter(mAdapter);
-        listview.setSelection(39);
 
+        listview.setSelectionFromLeft(40, (eleWidth * 10) + 1);
 
     }
 
@@ -75,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+
             View retval = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewitem, null);
             TextView title = (TextView) retval.findViewById(R.id.title);
             ImageView img = (ImageView) retval.findViewById(R.id.image);
@@ -99,12 +106,14 @@ public class MainActivity extends AppCompatActivity {
                 lastPos = 1;
             }else {
                 if(y == 0){
-                    num.setText("10");
-                    lastPos = 20;
+                    num.setText(showData);
+                    lastPos = nextCount;
                 }else if(pos >= lastPos){
+
                     num.setText(dataObjects[(pos-1) - 10]);
                     lastPos = pos;
                 }else{
+
                     int newPos = pos + 20;
                     if(newPos > count){
                         newPos = count;
