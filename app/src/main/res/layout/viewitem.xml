@@ -5,36 +5,37 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#fff"
+    android:paddingTop="20dp"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ele_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="left|center"
         >
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/no_scale"
-            />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:gravity="left|center"
+            android:gravity="center"
             android:textSize="10dp"
             android:textStyle="bold"
             android:text="1"
             />
 
-    </LinearLayout>
+        <ImageView
+            android:layout_below="@+id/title"
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_scale"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
 
 
 

@@ -3,26 +3,20 @@ package in.anshulsapps.sliddingscale;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
-import android.view.GestureDetector.OnGestureListener;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     public static String[] dataObjects = new String[100];
-
-
 
     TextView num;
     int eleWidth;
@@ -44,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
+        width = width - 48;
         eleWidth = (int) width / 19;
 
         count = dataObjects.length;
@@ -56,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         listview = (HorizontalListView) findViewById(R.id.listview);
         listview.setAdapter(mAdapter);
+        listview.setSelection(39);
 
 
     }
@@ -82,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             View retval = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewitem, null);
             TextView title = (TextView) retval.findViewById(R.id.title);
             ImageView img = (ImageView) retval.findViewById(R.id.image);
-            LinearLayout ele_ll = (LinearLayout) retval.findViewById(R.id.ele_ll);
+            RelativeLayout ele_ll = (RelativeLayout) retval.findViewById(R.id.ele_ll);
 
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)  ele_ll.getLayoutParams();
             params.width = eleWidth;
@@ -102,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 num.setText("10");
                 lastPos = 1;
             }else {
-
-
                 if(y == 0){
                     num.setText("10");
                     lastPos = 20;
